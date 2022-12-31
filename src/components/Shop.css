@@ -1,0 +1,36 @@
+.store-items {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto;
+	gap: 2rem;
+	padding: 2rem;
+	text-align: center;
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.item img {
+	max-width: 100%;
+	height: auto;
+}
+
+.item div {
+	margin-top: 1rem;
+}
+
+.item input {
+	width: 4rem;
+	text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
