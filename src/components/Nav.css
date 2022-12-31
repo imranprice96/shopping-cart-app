@@ -1,0 +1,24 @@
+.navbar {
+	display: flex;
+	background-color: black;
+	justify-content: space-between;
+	padding: 2rem;
+	align-items: center;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: 2rem;
+}
