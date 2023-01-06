@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Shop.css";
+import Item from "./item";
 
 function Shop() {
 	const [items, setItems] = useState([]);
@@ -16,11 +17,13 @@ function Shop() {
 	};
 
 	return (
-		<div>
+		<div className="shop-container">
 			<h1>Shop</h1>
 			<div className="store-items">
 				{items.map((item) => (
-					<div key={item.id} className="item">
+					// ------------------------------------------ //
+					// ADD ALL THIS LOGIC INTO A SEPARATE COMPONENT
+					/*<div key={item.id} className="item">
 						<h3>{item.title}</h3>
 						<img src={item.image} alt=""></img>
 						<div>
@@ -33,7 +36,14 @@ function Shop() {
 							/>
 							<button>-</button>
 						</div>
-					</div>
+					</div>*/
+					<Item
+						key={item.id}
+						id={item.id}
+						title={item.title}
+						image={item.image}
+					/>
+					// ------------------------------------------ //
 				))}
 			</div>
 		</div>
