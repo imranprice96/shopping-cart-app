@@ -1,5 +1,3 @@
-//import { useState, useEffect } from "react";
-
 import { useEffect, useState } from "react";
 
 function Item(props) {
@@ -17,7 +15,9 @@ function Item(props) {
 		<div key={props.id} className="item">
 			<h3>{props.title}</h3>
 			<img src={props.image} alt=""></img>
+
 			<div>
+				<h4>${props.price.toFixed(2)}</h4>
 				<div className="item-buttons">
 					<div className="quantity-container">
 						<button onClick={increase}>+</button>

@@ -10,18 +10,35 @@
 }
 
 .shop-container {
+	background-color: #e5e5e5;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+.container {
+	max-width: 1500px;
+	background-color: white;
+}
+
+#title {
+	width: 100%;
+	margin: 0;
+	padding: 2rem 0 0 2rem;
+}
+
 .item {
 	display: flex;
 	flex-direction: column;
-	border: 2px solid black;
+	border: 0px solid black;
 	border-radius: 1em;
 	justify-content: space-between;
 	padding: 1rem;
+	background-color: white;
+}
+
+.item:hover {
+	box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
 .item img {
@@ -36,6 +53,11 @@
 .item input {
 	width: 4rem;
 	text-align: center;
+}
+
+.item h3 {
+	font-size: 1.2rem;
+	font-family: "Courier New", Courier, monospace;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -72,6 +94,7 @@ input[type="number"]::-webkit-outer-spin-button {
 	padding: 1rem 2rem;
 	width: 100%;
 	cursor: pointer;
+	font-size: 1rem;
 }
 
 #add-btn:hover {
