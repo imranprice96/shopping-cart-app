@@ -8,7 +8,7 @@ const RouteSwitch = () => {
 	const [cart, setCart] = useState([]);
 	return (
 		<BrowserRouter>
-			<Nav />
+			<Nav cart={cart} setCart={setCart} />
 			<Routes>
 				<Route path="/" element={<App />} />
 				<Route
@@ -20,4 +20,5 @@ const RouteSwitch = () => {
 	);
 };
 
+//Image by Leonhard Niederwimmer - Pixabay
 export default RouteSwitch;
