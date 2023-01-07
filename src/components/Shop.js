@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import "./Shop.css";
 import Item from "./item";
 
-function Shop() {
+function Shop(props) {
 	const [items, setItems] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const { cart, setCart } = props;
 
 	useEffect(() => {
 		fetchItems();
@@ -14,7 +15,7 @@ function Shop() {
 		setLoading(true);
 		const data = await fetch("https://fakestoreapi.com/products?limit=12");
 		const items = await data.json();
-		console.log(items);
+		//console.log(items);
 		setItems(items);
 		setLoading(false);
 	};
@@ -30,7 +31,7 @@ function Shop() {
 	return (
 		<div className="shop-container">
 			<div className="container">
-				<h1 id="title">Shop</h1>
+				<h1 id="title">Shop | Cart:{cart.length}</h1>
 				<div className="store-items">
 					{items.map((item) => (
 						<Item
@@ -39,6 +40,8 @@ function Shop() {
 							title={item.title}
 							image={item.image}
 							price={item.price}
+							cart={cart}
+							setCart={setCart}
 						/>
 					))}
 				</div>
@@ -46,5 +49,17 @@ function Shop() {
 		</div>
 	);
 }
+
+//TODO
+/*
+	Shopping Cart Array
+	Refresh app on checkout
+	Add to bag function
+		- quantity
+		- price
+		- running total
+	Add some cool stuff to home page
+	Pass array down to children?
+*/
 
 export default Shop;
