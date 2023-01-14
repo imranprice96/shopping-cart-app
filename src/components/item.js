@@ -22,18 +22,44 @@ function Item(props) {
 
 	const addToBag = () => {
 		if (quantity > 0) {
-			const newItem = {
-				...item,
-				quantity: quantity,
-				total: item.price * quantity,
-			};
-			setCart((cart) => [...cart, newItem]);
+			if (checkItemInCart()) {
+				addQuantityToCart();
+			} else {
+				const newItem = {
+					...item,
+					quantity: quantity,
+					total: item.price * quantity,
+				};
+				setCart((cart) => [...cart, newItem]);
+			}
+
 			setQuantity(0);
 		}
 	};
 
+	const addQuantityToCart = () => {
+		let itemsCopy = [...cart];
+		for (const i in itemsCopy) {
+			if (itemsCopy[i].id === item.id) {
+				let newItem = {
+					...itemsCopy[i],
+					quantity: quantity + itemsCopy[i].quantity,
+				};
+				itemsCopy[i] = newItem;
+				setCart(itemsCopy);
+			}
+		}
+	};
+
+	const checkItemInCart = () => {
+		for (const i in cart) {
+			if (cart[i].id === item.id) return true;
+		}
+		return false;
+	};
+
 	useEffect(() => {
-		console.log(quantity);
+		//console.log(quantity);
 	}, [quantity]);
 
 	return (

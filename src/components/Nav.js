@@ -3,17 +3,14 @@ import "./Nav.css";
 import Modal from "react-modal";
 import { useState } from "react";
 
+Modal.setAppElement("#root");
+
 function Nav(props) {
-	let subtitle;
 	const { cart, setCart } = props;
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => {
 		setIsOpen(true);
-	};
-
-	const afterOpenModal = () => {
-		subtitle.style.color = "blue";
 	};
 
 	const closeModal = () => {
@@ -23,6 +20,15 @@ function Nav(props) {
 	const checkout = () => {
 		setCart([]);
 		closeModal();
+	};
+
+	const getQuantity = () => {
+		//console.log(cart);
+		let count = 0;
+		for (const item in cart) {
+			count = count + cart[item].quantity;
+		}
+		return count;
 	};
 
 	return (
@@ -35,12 +41,11 @@ function Nav(props) {
 					<h3>Shop</h3>
 				</Link>
 				<Link>
-					<h3 onClick={openModal}>Cart: {cart.length}</h3>
+					<h3 onClick={openModal}>Cart: {getQuantity()}</h3>
 				</Link>
 			</div>
 			<Modal
 				isOpen={modalIsOpen}
-				onAfterOpen={afterOpenModal}
 				onRequestClose={closeModal}
 				contentLabel="Example"
 			>
