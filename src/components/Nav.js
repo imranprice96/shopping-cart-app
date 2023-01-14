@@ -50,6 +50,17 @@ function Nav(props) {
 				contentLabel="Example"
 			>
 				<div>
+					{cart.map((item) => (
+						<p key={item.id}>
+							<img src={item.image} width="60px" height="60px"></img>
+							{item.title} | ${item.price} x {item.quantity} : $
+							{item.total}
+							<button>remove</button>
+						</p>
+					))}
+					<div>Total:</div>
+				</div>
+				<div>
 					<Link to="/">
 						<button onClick={checkout}>Checkout</button>
 					</Link>

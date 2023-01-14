@@ -35,6 +35,7 @@ function Item(props) {
 
 			setQuantity(0);
 		}
+		//console.log(cart);
 	};
 
 	const addQuantityToCart = () => {
@@ -44,6 +45,7 @@ function Item(props) {
 				let newItem = {
 					...itemsCopy[i],
 					quantity: quantity + itemsCopy[i].quantity,
+					total: itemsCopy[i].price * (quantity + itemsCopy[i].quantity),
 				};
 				itemsCopy[i] = newItem;
 				setCart(itemsCopy);
