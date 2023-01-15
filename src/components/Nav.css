@@ -30,3 +30,38 @@ a > h3 {
 	height: 100%;
 	justify-content: space-between;
 }
+
+.cart-container {
+	display: grid;
+	grid-template-columns: 2fr 6fr 2fr 0.5fr;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.cart-title {
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+	padding: 1rem;
+}
+
+.cart-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.cart-image {
+	padding: 1rem;
+}
+
+.cart-image img {
+	width: 5rem;
+	height: 5rem;
+}
+
+.cart-btn {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+}

@@ -5,6 +5,17 @@ import { useState } from "react";
 
 Modal.setAppElement("#root");
 
+const modalStyles = {
+	content: {
+		top: "50%",
+		left: "50%",
+		right: "auto",
+		bottom: "auto",
+		marginRight: "-50%",
+		transform: "translate(-50%, -50%)",
+	},
+};
+
 function Nav(props) {
 	const { cart, setCart } = props;
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -31,6 +42,21 @@ function Nav(props) {
 		return count;
 	};
 
+	const getTotal = () => {
+		let total = 0;
+		for (const item in cart) {
+			total = total + cart[item].total;
+		}
+		return total;
+	};
+
+	const removeItem = (id) => {
+		//console.log(id);
+		let tempCart = [...cart];
+		tempCart.splice(id, 1);
+		//console.log(tempCart);
+	};
+
 	return (
 		<nav className="navbar">
 			<Link to="/">
@@ -47,18 +73,31 @@ function Nav(props) {
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
-				contentLabel="Example"
+				contentLabel="Cart"
+				style={modalStyles}
 			>
 				<div>
 					{cart.map((item) => (
-						<p key={item.id}>
-							<img src={item.image} width="60px" height="60px"></img>
-							{item.title} | ${item.price} x {item.quantity} : $
-							{item.total}
-							<button>remove</button>
-						</p>
+						<div key={item.id} className="cart-container">
+							<div className="cart-image">
+								<img
+									src={item.image}
+									width="60px"
+									height="60px"
+									alt=""
+								></img>
+							</div>
+							<div className="cart-title">{item.title}</div>
+							<div className="cart-info">
+								<div>Qty: {item.quantity}</div>
+								<div>NZD ${item.price.toFixed(2)}</div>
+							</div>
+							<div className="cart-btn">
+								<button onClick={removeItem(item.id)}>x</button>
+							</div>
+						</div>
 					))}
-					<div>Total:</div>
+					<div>Total: ${getTotal().toFixed(2)}</div>
 				</div>
 				<div>
 					<Link to="/">
