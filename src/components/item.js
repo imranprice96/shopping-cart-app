@@ -78,7 +78,7 @@ function Item(props) {
 							type="number"
 							id={`${item.id}-in`}
 							name="quantity"
-							onChange={(e) => setQuantity(e.target.value)}
+							onChange={(e) => setQuantity(parseInt(e.target.value))}
 							value={quantity}
 						/>
 						<button onClick={decrease}>-</button>

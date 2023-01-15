@@ -13,6 +13,9 @@ const modalStyles = {
 		bottom: "auto",
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
+		width: "70vw",
+		maxWidth: "1000px",
+		padding: "2rem",
 	},
 };
 
@@ -51,10 +54,13 @@ function Nav(props) {
 	};
 
 	const removeItem = (id) => {
-		//console.log(id);
 		let tempCart = [...cart];
-		tempCart.splice(id, 1);
-		//console.log(tempCart);
+		for (const item in tempCart) {
+			if (id === cart[item].id) {
+				tempCart.splice(cart[item], 1);
+			}
+		}
+		setCart(tempCart);
 	};
 
 	return (
@@ -67,7 +73,9 @@ function Nav(props) {
 					<h3>Shop</h3>
 				</Link>
 				<Link>
-					<h3 onClick={openModal}>Cart: {getQuantity()}</h3>
+					<h3 id="cart" onClick={openModal}>
+						Cart: {getQuantity()}
+					</h3>
 				</Link>
 			</div>
 			<Modal
@@ -76,7 +84,13 @@ function Nav(props) {
 				contentLabel="Cart"
 				style={modalStyles}
 			>
-				<div>
+				<div className="cart-header-container">
+					<div id="cart-header">Shopping Cart:</div>
+					<button id="header-btn" onClick={closeModal}>
+						X
+					</button>
+				</div>
+				<div className="cart-items">
 					{cart.map((item) => (
 						<div key={item.id} className="cart-container">
 							<div className="cart-image">
@@ -93,19 +107,23 @@ function Nav(props) {
 								<div>NZD ${item.price.toFixed(2)}</div>
 							</div>
 							<div className="cart-btn">
-								<button onClick={removeItem(item.id)}>x</button>
+								<button onClick={() => removeItem(item.id)}>x</button>
 							</div>
 						</div>
 					))}
-					<div>Total: ${getTotal().toFixed(2)}</div>
 				</div>
-				<div>
+				<div className="total">Total: ${getTotal().toFixed(2)}</div>
+				<div className="checkout-btns">
+					<button onClick={closeModal}>Continue Shopping</button>
 					<Link to="/">
 						<button onClick={checkout}>Checkout</button>
 					</Link>
-					<button onClick={closeModal}>Continue Shopping</button>
 				</div>
 			</Modal>
+
+			<button id="open-cart" onClick={openModal}>
+				Cart ({getQuantity()})
+			</button>
 		</nav>
 	);
 }

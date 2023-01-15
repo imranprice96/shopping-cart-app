@@ -31,7 +31,7 @@ function Shop(props) {
 	return (
 		<div className="shop-container">
 			<div className="container">
-				<h1 id="title">Shop</h1>
+				<h1 id="title">Catalog</h1>
 				<div className="store-items">
 					{items.map((item) => (
 						<Item
