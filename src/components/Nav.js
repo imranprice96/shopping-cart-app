@@ -64,11 +64,11 @@ function Nav(props) {
 
 	return (
 		<nav className="navbar">
-			<Link to="/">
+			<Link to="/shopping-cart-app">
 				<h1>Home</h1>
 			</Link>
 			<div className="nav-end">
-				<Link to="shop">
+				<Link to="/shopping-cart-app/shop">
 					<h3>Shop</h3>
 				</Link>
 				<Link>
@@ -114,7 +114,7 @@ function Nav(props) {
 				<div className="total">Total: ${getTotal().toFixed(2)}</div>
 				<div className="checkout-btns">
 					<button onClick={closeModal}>Continue Shopping</button>
-					<Link to="/">
+					<Link to="/shopping-cart-app">
 						<button onClick={checkout}>Checkout</button>
 					</Link>
 				</div>

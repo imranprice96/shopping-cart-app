@@ -10,9 +10,9 @@ const RouteSwitch = () => {
 		<BrowserRouter>
 			<Nav cart={cart} setCart={setCart} />
 			<Routes>
-				<Route path="/" element={<App />} />
+				<Route path="/shopping-cart-app" element={<App />} />
 				<Route
-					path="/shop"
+					path="/shopping-cart-app/shop"
 					element={<Shop cart={cart} setCart={setCart} />}
 				/>
 			</Routes>
