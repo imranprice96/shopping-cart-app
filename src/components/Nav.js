@@ -37,7 +37,6 @@ function Nav(props) {
 	};
 
 	const getQuantity = () => {
-		//console.log(cart);
 		let count = 0;
 		for (const item in cart) {
 			count = count + cart[item].quantity;
@@ -56,8 +55,8 @@ function Nav(props) {
 	const removeItem = (id) => {
 		let tempCart = [...cart];
 		for (const item in tempCart) {
-			if (id === cart[item].id) {
-				tempCart.splice(cart[item], 1);
+			if (id === tempCart[item].id) {
+				tempCart.splice(item, 1);
 			}
 		}
 		setCart(tempCart);
@@ -120,12 +119,12 @@ function Nav(props) {
 					</Link>
 				</div>
 			</Modal>
-
-			<button id="open-cart" onClick={openModal}>
-				Cart ({getQuantity()})
-			</button>
+			{getQuantity() > 0 && (
+				<button id="open-cart" onClick={openModal}>
+					Cart ({getQuantity()})
+				</button>
+			)}
 		</nav>
 	);
 }
-
 export default Nav;
